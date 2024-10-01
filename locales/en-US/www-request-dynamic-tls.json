@@ -1,0 +1,91 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name",
+            "username": "Username",
+            "password": "Password"
+        },
+        "status": {
+            "connected": "connected",
+            "not-connected": "not connected",
+            "disconnected": "disconnected",
+            "connecting": "connecting",
+            "error": "error",
+            "ok": "OK"
+        },
+        "notification": {
+            "error": "<strong>Error</strong>: __message__",
+            "errors": {
+                "not-deployed": "node not deployed",
+                "no-response": "no response from server",
+                "unexpected": "unexpected error (__status__) __message__"
+            }
+        },
+        "errors": {
+            "nooverride": "Warning: msg properties can no longer override set node properties. See bit.ly/nr-override-msg-props"
+        }
+    },
+    "httpin": {
+        "label": {
+            "method": "Method",
+            "url": "URL",
+            "doc": "Docs",
+            "return": "Return",
+            "upload": "Accept file uploads?",
+            "status": "Status code",
+            "headers": "Headers",
+            "other": "other",
+            "paytoqs": {
+                "ignore": "Ignore",
+                "query": "Append to query-string parameters",
+                "body": "Send as request body"
+            },
+            "utf8String": "UTF8 string",
+            "binaryBuffer": "binary buffer",
+            "jsonObject": "parsed JSON object",
+            "authType": "Type",
+            "bearerToken": "Token"
+        },
+        "setby": "- set by msg.method -",
+        "basicauth": "Use authentication",
+        "use-tls": "Enable secure (SSL/TLS) connection",
+        "tls-config": "TLS Configuration",
+        "basic": "basic authentication",
+        "digest": "digest authentication",
+        "bearer": "bearer authentication",
+        "use-proxy": "Use proxy",
+        "persistent-http": "Enable connection keep-alive",
+        "proxy-config": "Proxy Configuration",
+        "use-proxyauth": "Use proxy authentication",
+        "noproxy-hosts": "Ignore hosts",
+        "senderr": "Only send non-2xx responses to Catch node",
+        "utf8": "a UTF-8 string",
+        "binary": "a binary buffer",
+        "json": "a parsed JSON object",
+        "tip": {
+            "in": "The url will be relative to ",
+            "res": "The messages sent to this node <b>must</b> originate from an <i>http input</i> node",
+            "req": "Tip: If the JSON parse fails the fetched string is returned as-is."
+        },
+        "httpreq": "http multipart request",
+        "errors": {
+            "not-created": "Cannot create http-in node when httpNodeRoot set to false",
+            "missing-path": "missing path",
+            "no-response": "No response object",
+            "json-error": "JSON parse error",
+            "no-url": "No url specified",
+            "deprecated-call": "Deprecated call to __method__",
+            "invalid-transport": "non-http transport requested",
+            "timeout-isnan": "Timeout value is not a valid number, ignoring",
+            "timeout-isnegative": "Timeout value is negative, ignoring",
+            "invalid-payload": "Invalid payload",
+            "invalid-url": "Invalid url"
+        },
+        "status": {
+            "requesting": "requesting"
+        },
+        "insecureHTTPParser": "Disable strict HTTP parsing"
+    }
+}
