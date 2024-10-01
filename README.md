@@ -14,7 +14,7 @@ npm install -g node-red-contrib-http-request-dynamic-tls
 ## Features
 This module builds upon the Node-RED core HTTP/HTTPS request node and the versatile [Request](https://github.com/request/request) library, which includes features for proxying, streaming, and comprehensive TLS/SSL support.
 
-### Key Enhancements in This Fork:
+### Key Enhancements:
 - **Multipart Request Support**: Added support for sending multipart form data in HTTP requests, a feature that the original node lacked.
 - **Improved SSL/TLS Handling**: Resolved issues related to SSL/TLS configuration, ensuring compatibility with secure HTTPS endpoints and proxies.
 - **Optimized Proxy Support**: Supports HTTP over HTTPS proxies using the CONNECT method, which is not possible with the Core Node-RED HTTP Request node.
