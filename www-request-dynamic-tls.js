@@ -1011,43 +1011,50 @@ in your Node-RED user directory (${RED.settings.userDir}).
         return authHeader
     }
 
-    /**
-     *  Decode a string of ASCII codes into a string
-     * @param {asciiInput} asciiInput to decode
-     * @returns {string} decoded string
-     */
-    function decodeAsciiString(asciiInput) {
-        const asciiString = String(asciiInput);
-        let decodedString = '';
-        let i = 0;
+/**
+ * Decode a string of UTF-8 encoded codes into a string
+ * @param {string} asciiInput - The string of ASCII/UTF-8 codes to decode
+ * @returns {string} decoded string
+ */
+function decodeAsciiString(asciiInput) {
+    const asciiString = String(asciiInput);
+    let decodedString = '';
+    let i = 0;
 
-        while (i < asciiString.length) {
-            let asciiCode;
+    while (i < asciiString.length) {
+        let asciiCode;
+        let charCode;
 
-            // Try to read 3 characters
-            if (i + 2 < asciiString.length) {
-                asciiCode = asciiString.substring(i, i + 3);
-                if (parseInt(asciiCode, 10) < 128) {
-                    decodedString += String.fromCharCode(parseInt(asciiCode, 10));
-                    i += 3; // Move by 3 characters
-                    continue;
-                }
+        // Try to decode 3-character sequences (e.g., for multibyte characters)
+        if (i + 2 < asciiString.length) {
+            asciiCode = asciiString.substring(i, i + 3);
+            charCode = parseInt(asciiCode, 10);
+
+            if (!isNaN(charCode) && charCode <= 255) { // Extended ASCII/Latin-1 support
+                decodedString += String.fromCharCode(charCode);
+                i += 3;
+                continue;
             }
-
-            // Try to read 2 characters
-            if (i + 1 < asciiString.length) {
-                asciiCode = asciiString.substring(i, i + 2);
-                if (parseInt(asciiCode, 10) < 128) {
-                    decodedString += String.fromCharCode(parseInt(asciiCode, 10));
-                    i += 2; // Move by 2 characters
-                    continue;
-                }
-            }
-
-            // If neither worked, move by 1 character to skip invalid input
-            i += 1;
         }
 
-        return decodedString;
+        // Try to decode 2-character sequences (for 2-digit ASCII codes)
+        if (i + 1 < asciiString.length) {
+            asciiCode = asciiString.substring(i, i + 2);
+            charCode = parseInt(asciiCode, 10);
+
+            if (!isNaN(charCode) && charCode <= 255) { // Check within extended ASCII
+                decodedString += String.fromCharCode(charCode);
+                i += 2;
+                continue;
+            }
+        }
+
+        // If decoding fails, move by 1 character
+        i += 1;
     }
+
+    // Convert to UTF-8 to handle characters like "é"
+    return decodeURIComponent(escape(decodedString)); 
+}
+
 }
