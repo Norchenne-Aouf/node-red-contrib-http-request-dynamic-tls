@@ -16,9 +16,9 @@
     "multipart"
   ],
   "author": {
-      "name": "Norchenne Aouf",
-      "email": "norchenne12@outlook.fr",
-      "url":"https://github.com/Norchenne-Aouf"
+    "name": "Norchenne Aouf",
+    "email": "norchenne12@outlook.fr",
+    "url": "https://github.com/Norchenne-Aouf"
   },
   "license": "MIT",
   "bugs": {
@@ -29,6 +29,9 @@
     "nodes": {
       "www-request-dynamic-tls": "www-request-dynamic-tls.js"
     }
+  },
+  "engines": {
+    "node": ">=12.0.0"
   },
   "dependencies": {
     "cookie": "^0.6.0",
