@@ -1,0 +1,163 @@
+[
+    {
+        "id": "76bf216e0206e420",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fc65057c1b2bf216",
+        "type": "www-request-dynamic-tls",
+        "z": "76bf216e0206e420",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "requestbin.com",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "accept",
+                "keyValue": "",
+                "valueType": "text/html",
+                "valueValue": ""
+            }
+        ],
+        "x": 640,
+        "y": 220,
+        "wires": [
+            [
+                "2cf1b3fddd2e798f",
+                "a3dee6e3ae41f6a6"
+            ]
+        ]
+    },
+    {
+        "id": "5303488730b85f90",
+        "type": "function",
+        "z": "76bf216e0206e420",
+        "name": "prepare request body",
+        "func": "let options = {}\noptions.cert = `-----BEGIN CERTIFICATE-----\nMIIDXTCCAkWgAwIBAgIJAK4W2Y4tN1xVMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV\nBAYTAkFVMRMwEQYDVQQIDApUZXN0IERpc3RyaWN0MQ8wDQYDVQQHDAZMb2NhbGUw\nHhcNMTgwNjE5MTIwMTI4WhcNMTkwNjE5MTIwMTI4WjBFMQswCQYDVQQGEwJBVTER\nMA8GA1UECAwITE5hbWUgVGVzdDEOMAwGA1UEBwwFTG9jYWxlMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEArh4n6eT1g2FsL1cH0L5m0K / XWcD / s6oT3eAf\nh6y7UdZyR6HcGqzFPEjWQK3lSUnQAIwNd7My9LlHQ5YOA2U0EpnXFSf8VbuTyG4e\nI1MBRof5GoEDxqUib5fQzCZobcM1xqog2gFTeN2Z4cUm4D2k5H7LzB7UR5BML1E8\njBuAVeS8MOmUoe6vG2w7cp8vg2ttdDTCM4BQ / qC5EBUg5T5ZJr7 + jB23bTm / 9uKH\n3lh0WcEB0xgwLtHq8lN0fnSeDNGth3vK5Kr0Ymy9Otu29M1cJuS5YO3I48Qs01Tx\ncbS7mLPOLScPCfO5wBtbwWkmnMkJ6OtY8dHBPiYRhgH0Cw1mRQIDAQABo1AwTjAd\nBgNVHQ4EFgQUERf28m0CzAv6EVyTPzB39h14e0AwHwYDVR0jBBgwFoAUERf28m0C\nzAv6EVyTPzB39h14e0AwDAYDVR0TBAUwAwEB / zANBgkqhkiG9w0BAQsFAAOCAQEA\nT4y6CSsEp0RFboUVok + dXtDPGR1BDM7zW1fj6I0oD3WV0OqxOt6xPbYfMC6Sm8pR\nJH70P8gIYcclUl4cZSHkHHT0GHbP0A30VzW91fWm7xHGWNdY1gnqPHTE / qK3Ak9S\nFrW / ZHhnbJ2HiVDSIFD1Oq8mczR1Wg ==\n    ----- END CERTIFICATE-----\n`\noptions.key = `-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArh4n6eT1g2FsL1cH\n0L5m0K/XWcD/s6oT3eAfh6y7UdZyR6HcGqzFPEjWQK3lSUnQAIwNd7My9LlHQ5YOA\n2U0EpnXFSf8VbuTyG4eI1MBRof5GoEDxqUib5fQzCZobcM1xqog2gFTeN2Z4cUm4D\n2k5H7LzB7UR5BML1E8jBuAVeS8MOmUoe6vG2w7cp8vg2ttdDTCM4BQ/qC5EBUg5T5\nZJr7+jB23bTm/9uKH3lh0WcEB0xgwLtHq8lN0fnSeDNGth3vK5Kr0Ymy9Otu29M1\ncJuS5YO3I48Qs01TxcbS7mLPOLScPCfO5wBtbwWkmnMkJ6OtY8dHBPiYRhgH0Cw1\nmRQIDAQABAoIBAQDA7/ZyX8u33v2jW2zHf5r1Q3xG9iIjkeUr5Syx9OtoP0f/ku1\nRjtQFfMm0JESuzkWqKPloRZ8yJupW6B0mM1d3ZZu5D4bC/78WoF1U77g06N6N5LZ\nVro4vn8GpL6h4jx98dhYQm3IghKDLX0cn4MSU6A8mn5s3IS5gVEdSVGeC54U0Weu\n6O5IBct/kdsRATF9wQ5XAPyBYY1bDty4YQJSYq4Fg6PWWOiFPCo5O3hVw8NfLssD\nuq57CKKQ15Fc1PqW7Uw75f+zA5K5TgQAOd44w2FhXpMuFWaRDgtn+zYZFZj/t0HD\nx52SHeZyQAoNAF61EGHwoFRcZ6mA1tEdVVEpN+yKAI9hLhchAoIBAQCEfwHdGk3\nfzx9/jlm+sy4WxkN5EOzTiogz8IKyYTLqzv8z1o/Bc8XpyDOeD32n3cF8SRH2G+a\nWFIbmB+3rW1uYNnHt8AEx49+VQHoEnDdV/YIPY2LRjZ+4zUWaLnsn6LopqO9ed13\nCV17nUbRl/wYwlzR1Dd8uRv+K1L+m4k3ZVDF0c8nC9wFxhvqZy8fsx5sIS/gpUCC\nRF3lm3SRmhTRZL9eTBshFkN5pk1hRGs9W9HPS8H2RRYkjFw48QmHFeFlGfWn+UtH\nFIr5PE8zyPvUI7bg12+j02ffZnJcTp0/7qNYqZ4k8+aSm7iwIUl6G+btQ/+IFXYN\nuE6zUkcTVW9bAOE8ZcVYUKITtwZoUtbQbFPWGeX3pExM4hSnfMXuZx2p6DplZaBz\nOeHVde6FYKnQQlL0H3F1p0FlUR0=\n-----END PRIVATE KEY-----\n`\nmsg.request ={\n    \"options\": options\n} \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 220,
+        "wires": [
+            [
+                "fc65057c1b2bf216",
+                "b7a84bb224b80a96"
+            ]
+        ]
+    },
+    {
+        "id": "a0b49ba1ec59b19e",
+        "type": "inject",
+        "z": "76bf216e0206e420",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 220,
+        "wires": [
+            [
+                "5303488730b85f90"
+            ]
+        ]
+    },
+    {
+        "id": "2cf1b3fddd2e798f",
+        "type": "debug",
+        "z": "76bf216e0206e420",
+        "name": "debug 366",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b7a84bb224b80a96",
+        "type": "debug",
+        "z": "76bf216e0206e420",
+        "name": "debug 367",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "c3356c79caec0ad4",
+        "type": "http in",
+        "z": "76bf216e0206e420",
+        "name": "",
+        "url": "/test",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 140,
+        "wires": [
+            [
+                "5303488730b85f90"
+            ]
+        ]
+    },
+    {
+        "id": "a3dee6e3ae41f6a6",
+        "type": "http response",
+        "z": "76bf216e0206e420",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 930,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f03a6b8e53dadd11",
+        "type": "comment",
+        "z": "76bf216e0206e420",
+        "name": "Configuring Certificates and Keys Using `msg.request.options` for HTTPS Requests",
+        "info": "You can use `msg.request.options` to include the desired certificate and key, \nor alternatively, you can provide the buffer of the PFX file in the `pfx` option along with the passphrase, if required.",
+        "x": 570,
+        "y": 160,
+        "wires": []
+    }
+]
