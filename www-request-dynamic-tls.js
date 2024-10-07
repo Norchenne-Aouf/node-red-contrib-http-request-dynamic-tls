@@ -430,7 +430,6 @@ in your Node-RED user directory (${RED.settings.userDir}).
             opts.decompress = false;
             opts.method = method;
             opts.retry = { limit: 0 };
-            opts.responseType = 'buffer';
             opts.maxRedirects = 21;
             opts.cookieJar = new CookieJar();
             opts.ignoreInvalidCookies = true;
@@ -812,12 +811,7 @@ in your Node-RED user directory (${RED.settings.userDir}).
                 msg.statusCode = res.statusCode;
                 msg.headers = res.headers;
                 msg.responseUrl = res.url;
-
-                if (jschardet.detect(res.body).encoding == "ascii") {
-                    msg.payload = decodeAsciiString(res.body)
-                }else{
-                    msg.payload = res.body;
-                }
+                msg.payload = res.body;
 
                 msg.redirectList = redirectList;
                 msg.retry = 0;
@@ -1010,51 +1004,5 @@ in your Node-RED user directory (${RED.settings.userDir}).
         authHeader = 'Digest ' + authHeader.join(', ')
         return authHeader
     }
-
-/**
- * Decode a string of UTF-8 encoded codes into a string
- * @param {string} asciiInput - The string of ASCII/UTF-8 codes to decode
- * @returns {string} decoded string
- */
-function decodeAsciiString(asciiInput) {
-    const asciiString = String(asciiInput);
-    let decodedString = '';
-    let i = 0;
-
-    while (i < asciiString.length) {
-        let asciiCode;
-        let charCode;
-
-        // Try to decode 3-character sequences (e.g., for multibyte characters)
-        if (i + 2 < asciiString.length) {
-            asciiCode = asciiString.substring(i, i + 3);
-            charCode = parseInt(asciiCode, 10);
-
-            if (!isNaN(charCode) && charCode <= 255) { // Extended ASCII/Latin-1 support
-                decodedString += String.fromCharCode(charCode);
-                i += 3;
-                continue;
-            }
-        }
-
-        // Try to decode 2-character sequences (for 2-digit ASCII codes)
-        if (i + 1 < asciiString.length) {
-            asciiCode = asciiString.substring(i, i + 2);
-            charCode = parseInt(asciiCode, 10);
-
-            if (!isNaN(charCode) && charCode <= 255) { // Check within extended ASCII
-                decodedString += String.fromCharCode(charCode);
-                i += 2;
-                continue;
-            }
-        }
-
-        // If decoding fails, move by 1 character
-        i += 1;
-    }
-
-    // Convert to UTF-8 to handle characters like "é"
-    return decodeURIComponent(escape(decodedString)); 
-}
 
 }
